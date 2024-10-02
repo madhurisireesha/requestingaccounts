@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Notifications</title>
+</head>
+<body>
+    <h1>My Notifications</h1>
+
+    <div>
+        <ul>
+            <li th:each="notification : ${notification}">
+                <span th:text="${notification}"></span>&nbsp;&nbsp;
+                <b>Requested</b>
+             <form action="/addmyfriend" method="post">
+       			 <input type="hidden" name="username" th:value="${notification}"/>
+       			 <button type="submit">CONFIRM</button>
+    		</form>
+            </li>
+        </ul>
+    </div>
+
+    <div th:if="${#lists.isEmpty(notification)}">
+        <p>No notifications available.</p>
+    </div>
+</body>
+</html>
